@@ -1,0 +1,34 @@
+#define MAXLEN 100
+#define MAX_FILE 10
+#define LOAD_SUCCESS 0 
+#define LOAD_FAIL 1
+#define SAVE_SUCCESS 0 
+#define SAVE_FAIL 1
+#define CREATE_SUCCESS 0 
+#define CREATE_FAIL 1
+#define EXTRACT_SUCCESS 0 
+#define EXTRACT_FAIL 1
+#define UNLOAD_SUCCESS 0 
+#define UNLOAD_FAIL 1
+
+struct VFS_INFO{
+	char vfs_name[MAXLEN];
+	int vfs_files;
+};
+
+struct VFS_FILE_INFO{
+        char vfs_file_name[MAXLEN];
+	int file_offset;
+	int file_size;
+};
+
+struct VFS_HEADER_INFO{
+	struct VFS_INFO vfs_info;
+	struct VFS_FILE_INFO vfs_file_info[MAX_FILE];
+};
+
+int VFS_create(char *);
+int VFS_load(char *);
+int VFS_save(char *);
+int VFS_extract(char *,char *);
+int VFS_unload();
